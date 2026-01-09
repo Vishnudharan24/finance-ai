@@ -16,8 +16,11 @@ def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
         for v in variants:
             if v in df.columns:
                 normalized[standard_col] = df[v]
+                # print(normalized.items())
+   
                 break
-
+    
+    
     normalized_df = pd.DataFrame(normalized)
 
     return normalized_df
