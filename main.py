@@ -34,15 +34,10 @@ if __name__ == "__main__":
 
     basic_metrics, mom_trends = analyze_data(normal_df)
 
-    # print(basic_metrics)
-    # print(mom_trends)
-    
-    metrics_df = pd.DataFrame([basic_metrics])
-    
-    mom_trends_df = pd.DataFrame([mom_trends])
+    basic_metrics = pd.DataFrame([basic_metrics])
 
-    analytics = pd.concat([metrics_df, mom_trends_df], axis = 1)
+    # analytics = pd.concat([basic_metrics, mom_trends], axis = 1)
 
-    analytics.to_json("financial_data.json", orient="records", date_format = "iso", indent = 4)
-
+    basic_metrics.to_json("metrics_summary.json", orient = "records", date_format = "iso", indent = 4)
+    mom_trends.to_json("mom_trends.json", orient = "records", date_format = "iso", indent = 4)
 
