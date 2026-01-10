@@ -115,7 +115,7 @@ def save_response(response, output_dir = None, formats = ["txt", "md", "html", "
 
     os.makedirs(output_dir, exist_ok = True)
 
-    base_path = os.path.join(output_dir, "financial_analysis")
+    base_path = os.path.join(output_dir, "output/financial_analysis")
 
     if 'txt' in formats:
         with open(f"{base_path}.txt", "w", encoding="utf-8") as f:
