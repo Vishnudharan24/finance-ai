@@ -2,6 +2,8 @@ from Ingestion.data_loader import data_loader
 from Ingestion.data_normalizer import normalize_columns
 from Ingestion.data_validator import validate_dataframe
 from analytics_engine.enginev1 import compute_basic_metrics, compute_mom_trends
+from ai_engine.ai_analyzer import generate_ai_insights
+from ai_engine.ai_analyzer import save_response
 
 import pandas as pd
 
@@ -27,7 +29,7 @@ def analyze_data(df_normal):
 if __name__ == "__main__":
     # df = ingest_financial_data("sample_financials.csv")
 
-    file_path = input("Enter the file path")
+    file_path = input("Enter the file path : ")
     normal_df = ingest_financial_data(file_path)
 
     # print(normal_df.head())
@@ -40,4 +42,9 @@ if __name__ == "__main__":
 
     basic_metrics.to_json("metrics_summary.json", orient = "records", date_format = "iso", indent = 4)
     mom_trends.to_json("mom_trends.json", orient = "records", date_format = "iso", indent = 4)
+
+    print("\nGenerating AI-powered financial insights...")
+    ai_insights = generate_ai_insights()
+    save_response(ai_insights)
+    
 
